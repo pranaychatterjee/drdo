@@ -1,6 +1,8 @@
 import socket
 import select
 import errno
+import speech_recognition as sr
+
 
 HEADER_LENGTH = 10
 
@@ -25,10 +27,26 @@ username = my_username.encode('utf-8')
 username_header = f"{len(username):<{HEADER_LENGTH}}".encode('utf-8')
 client_socket.send(username_header + username)
 message = input(f'{my_username} > ')
+
+#Speech Recognition Feature
+
 while True:
 
     # Wait for user to input a message
-    message = input(f'{my_username} > ')
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Speak Anything")
+        audio = r.listen(source)
+
+        try:
+            text = r.recognize_google(audio)
+            message = text #input(f'{my_username} > ')
+            print('You said: {}'.format(text))
+        except:
+            print("Sorry could not recognize your voice")
+
+    #message = input(f'{my_username} > ')
     #message = ""
     # If message is not empty - send it
     if message:
