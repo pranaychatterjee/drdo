@@ -29,4 +29,5 @@ It's an application which encrypts and decrypts the communicating signals. To pr
 Features:
 
 1. Sockets has been created just like a chat messenger. Source code of both client and server is uploaded. 
-2. Speech recognition is currently being added as an feature so that it will make things easy when we go for applying communication signals.
+2. Speech recognition is added as an feature so that it will make things easy when we go for applying communication signals.
+3. Speech chat messenger is ready for execution
